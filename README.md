@@ -1,26 +1,29 @@
 # PalindromeCheckerApp
 
-//Procedure
-1. Compile the program using → javac UseCase1PalindromeCheckerApp.java
-2. Run the program using → java UseCase1PalindromeCheckerApp
-3. The console will display the welcome message and app details
+ Procedure
+1. Compile the program using → javac UseCase2PalindromeCheckerApp.java  
+2. Run the program using → java UseCase2PalindromeCheckerApp  
+3. The program will check a hardcoded string and display whether it is a palindrome  
 
-//Flow of Project
+// Flow of Project
 → Program starts  
-→ JVM invokes main() method  
-→ App name and version displayed  
-→ Welcome message shown  
-→ Application initialized successfully
+→ Hardcoded string is defined  
+→ String is reversed using loop  
+→ Original and reversed strings compared  
+→ Result displayed on console  
+→ Program ends  
 
-//Objective
-To display a welcome message and application details when the Palindrome Checker App starts.  
-This helps introduce the user to the app before any palindrome checking begins.
+// Objective
+To check if a predefined (hardcoded) string is a palindrome and print the result.  
+This step introduces palindrome logic using string reversal and comparison.  
 
-//Topics Covered
-- Class and main() method
-- Static keyword usage
-- Console output using System.out.println()
-- Basic application startup flow
+// Topics Covered
+- Class and main() method  
+- String literals  
+- For loop usage for reversal  
+- Conditional statement (if-else)  
+- equalsIgnoreCase() for string comparison  
+- Console output using System.out.println()  
 
-//UseCase
-UC1: Application Entry & Welcome Message
+// Usecase
+UC2: Print a Hardcoded Palindrome Result
