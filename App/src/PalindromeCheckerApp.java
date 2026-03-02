@@ -1,14 +1,17 @@
+import java.util.Scanner;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        System.out.println("=====================================");
-        System.out.println(" Palindrome Checker App");
-        System.out.println("=====================================");
-        System.out.println("UC1: Application Entry & Welcome Message");
-        System.out.println("Version: 1.0");
-        System.out.println("-------------------------------------");
-        System.out.println("Welcome to the Palindrome Checker Application!");
-        System.out.println("This app helps you verify if a given string is a palindrome.");
-        System.out.println("-------------------------------------");
-        System.out.println("Application initialized successfully.\n");
+        System.out.println("====================================="); System.out.println(" Palindrome Checker App");
+        System.out.println("====================================="); System.out.println("UC3: User Input & Dynamic Palindrome Check"); System.out.println("-------------------------------------"); Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a word or phrase: "); String input = sc.nextLine();
+        String cleanedInput = input.replaceAll("\\s+", "").toLowerCase(); String reversed = "";
+        for (int i = cleanedInput.length() - 1; i >= 0; i--) { reversed += cleanedInput.charAt(i);
+        }
+        if (cleanedInput.equals(reversed)) {
+            System.out.println("✅\"" + input + "\" is a palindrome!"); } else {
+            System.out.println("❌\"" + input + "\" is NOT a palindrome.");
+        }
+        System.out.println("-------------------------------------"); System.out.println("Program execution completed.");
+        sc.close();
     }
 }
