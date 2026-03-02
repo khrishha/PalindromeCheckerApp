@@ -1,92 +1,43 @@
 import java.util.Scanner;
 
-public class PalindromeCheckerApp {
+public class UseCase9PalindromeCheckerApp {
 
-    static class Node {
-        char data;
-        Node next;
-        Node(char data) {
-            this.data = data;
-            this.next = null;
+    // Recursive method to check palindrome
+    public static boolean checkPalindrome(String str, int start, int end) {
+
+        // Base Condition: If pointers cross or meet
+        if (start >= end) {
+            return true;
         }
-    }
 
-    static Node head;
+        // If characters do not match
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive Call (move inward)
+        return checkPalindrome(str, start + 1, end - 1);
+    }
 
     public static void main(String[] args) {
-        System.out.println("=====================================");
-        System.out.println("      Palindrome Checker App");
-        System.out.println("=====================================");
-        System.out.println("UC8: Linked List Based Palindrome Checker");
-        System.out.println("-------------------------------------");
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a word or phrase: ");
-        String input = sc.nextLine();
+        Scanner scanner = new Scanner(System.in);
 
-        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
+        System.out.println("=== UC9: Recursive Palindrome Checker ===");
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-        for (char c : cleaned.toCharArray()) {
-            append(c);
-        }
+        // Optional normalization (remove spaces & ignore case)
+        input = input.replaceAll("\\s+", "").toLowerCase();
 
-        if (isPalindrome(head)) {
-            System.out.println("✅ \"" + input + "\" is a palindrome!");
+        boolean isPalindrome = checkPalindrome(input, 0, input.length() - 1);
+
+        if (isPalindrome) {
+            System.out.println("Result: The string is a Palindrome.");
         } else {
-            System.out.println("❌ \"" + input + "\" is NOT a palindrome.");
+            System.out.println("Result: The string is NOT a Palindrome.");
         }
 
-        System.out.println("-------------------------------------");
-        System.out.println("Program execution completed.");
-        sc.close();
-    }
-
-    static void append(char data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            return;
-        }
-        Node temp = head;
-        while (temp.next != null) {
-            temp = temp.next;
-        }
-        temp.next = newNode;
-    }
-
-    static boolean isPalindrome(Node head) {
-        if (head == null || head.next == null)
-            return true;
-
-        Node slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        Node secondHalf = reverse(slow);
-        Node firstHalf = head;
-
-        while (secondHalf != null) {
-            if (firstHalf.data != secondHalf.data)
-                return false;
-            firstHalf = firstHalf.next;
-            secondHalf = secondHalf.next;
-        }
-
-        return true;
-    }
-
-    static Node reverse(Node node) {
-        Node prev = null;
-        Node current = node;
-        Node next;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        return prev;
+        scanner.close();
     }
 }
